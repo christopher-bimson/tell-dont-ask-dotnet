@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using TellDontAskKata.Domain.Orders.Exceptions;
 using TellDontAskKata.Domain.Products;
-using TellDontAskKata.Shipping;
+using TellDontAskKata.Domain.Shipping;
 
 namespace TellDontAskKata.Domain.Orders
 {

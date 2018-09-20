@@ -1,6 +1,6 @@
 ﻿using TellDontAskKata.Domain.Orders;
 
-namespace TellDontAskKata.Shipping
+namespace TellDontAskKata.Domain.Shipping
 {
     public interface IShipmentService
     {

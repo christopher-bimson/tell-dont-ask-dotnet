@@ -1,6 +1,5 @@
-﻿using TellDontAskKata.Domain;
-using TellDontAskKata.Domain.Orders;
-using TellDontAskKata.Shipping;
+﻿using TellDontAskKata.Domain.Orders;
+using TellDontAskKata.Domain.Shipping;
 
 namespace TellDontAskKata.Tests.Doubles
 {

@@ -1,5 +1,5 @@
 ﻿using TellDontAskKata.Domain.Orders;
-using TellDontAskKata.Shipping;
+using TellDontAskKata.Domain.Shipping;
 
 namespace TellDontAskKata.UseCase
 {

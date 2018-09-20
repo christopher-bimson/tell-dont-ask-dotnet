@@ -51,7 +51,7 @@
     <Compile Include="Domain\Orders\IOrderRepository.cs" />
     <Compile Include="Domain\Products\IProductCatalog.cs" />
     <Compile Include="Domain\Orders\Exceptions\ApprovedOrderCannotBeRejectedException.cs" />
-    <Compile Include="Shipping\IShipmentService.cs" />
+    <Compile Include="Domain\Shipping\IShipmentService.cs" />
     <Compile Include="UseCase\OrderApprovalRequest.cs" />
     <Compile Include="UseCase\OrderCreationUseCase.cs" />
     <Compile Include="UseCase\SellItemRequest.cs" />
