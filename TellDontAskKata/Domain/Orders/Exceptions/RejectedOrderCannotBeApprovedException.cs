@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace TellDontAskKata.UseCase
+namespace TellDontAskKata.Domain.Orders.Exceptions
 {
     public class RejectedOrderCannotBeApprovedException : Exception
     {

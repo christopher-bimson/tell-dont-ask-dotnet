@@ -1,6 +1,4 @@
-﻿using TellDontAskKata.Domain;
-
-namespace TellDontAskKata.Repository
+﻿namespace TellDontAskKata.Domain.Products
 {
     public interface IProductCatalog
     {

@@ -9,6 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TellDontAskKata.Tests", "Te
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BEA4F483-976F-408A-8D23-C224E3C165F7}"
 	ProjectSection(SolutionItems) = preProject
+		Instructions.md = Instructions.md
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection

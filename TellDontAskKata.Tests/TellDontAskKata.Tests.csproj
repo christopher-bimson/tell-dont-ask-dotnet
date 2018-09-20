@@ -61,6 +61,7 @@
     <Compile Include="Doubles\TestShipmentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UseCases\OrderApprovalUseCaseTest.cs" />
+    <Compile Include="UseCases\OrderBuilder.cs" />
     <Compile Include="UseCases\OrderCreationUseCaseTest.cs" />
     <Compile Include="UseCases\OrderShipmentUseCaseTest.cs" />
   </ItemGroup>

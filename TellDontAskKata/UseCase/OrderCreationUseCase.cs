@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using TellDontAskKata.Domain;
-using TellDontAskKata.Repository;
+﻿using TellDontAskKata.Domain;
+using TellDontAskKata.Domain.Orders;
+using TellDontAskKata.Domain.Products;
 
 namespace TellDontAskKata.UseCase
 {
@@ -19,48 +18,11 @@ namespace TellDontAskKata.UseCase
 
         public void Run(SellItemsRequest request)
         {
-            var order = new Order
-            {
-                Status = OrderStatus.Created,
-                Items = new List<OrderItem>(),
-                Currency = "EUR",
-                Total = 0.0m,
-                Tax = 0.0m
-            };
-
+            var order = new Order();
             foreach (var itemRequest in request.Requests)
             {
-                var product = productCatalog.GetByName(itemRequest.ProductName);
-                if (product == null)
-                {
-                    throw new UnknownProductException();
-                }
-                else
-
-                {
-
-                    var unitaryTax = Math.Round(product.Price / 100 * product.Category.TaxPercentage, 2,
-                        MidpointRounding.AwayFromZero);
-
-                    var unitaryTaxAmount = Math.Round(product.Price + unitaryTax, 2, MidpointRounding.AwayFromZero);
-
-                    var taxedAmount = Math.Round(unitaryTaxAmount * itemRequest.Quantity, 2,
-                        MidpointRounding.AwayFromZero);
-
-                    var taxAmount = Math.Round(unitaryTax * itemRequest.Quantity, 2, MidpointRounding.AwayFromZero);
-
-                    var orderItem = new OrderItem
-                    {
-                        Product = product,
-                        Quantity = itemRequest.Quantity,
-                        Tax = taxAmount,
-                        TaxedAmount = taxedAmount
-                    };
-
-                    order.Items.Add(orderItem);
-                    order.Total += taxedAmount;
-                    order.Tax += taxAmount;
-                }
+	            var product = productCatalog.GetByName(itemRequest.ProductName);
+	            order.Add(product, itemRequest.Quantity);
             }
             orderRepository.Save(order);
         }

@@ -1,9 +1,9 @@
-﻿namespace TellDontAskKata.UseCase
-{
-    using System;
-    using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
-    public class OrderCannotBeShippedTwiceException : Exception
+namespace TellDontAskKata.Domain.Orders.Exceptions
+{
+	public class OrderCannotBeShippedTwiceException : Exception
     {
         public OrderCannotBeShippedTwiceException()
         {

@@ -1,6 +1,8 @@
 ﻿using System;
 
 using TellDontAskKata.Domain;
+using TellDontAskKata.Domain.Orders;
+using TellDontAskKata.Domain.Orders.Exceptions;
 using TellDontAskKata.Tests.Doubles;
 using TellDontAskKata.UseCase;
 
@@ -26,11 +28,10 @@ namespace TellDontAskKata.Tests.UseCases
         [Fact]
         public void ShipApprovedOrder()
         {
-            Order initialOrder = new Order
-            {
-                Id = 1,
-                Status = OrderStatus.Approved
-            };
+	        var initialOrder = OrderBuilder.AnOrder()
+		        .WithId(1)
+		        .WithStatus(OrderStatus.Approved)
+		        .Build();
             orderRepository.AddOrder(initialOrder);
 
             OrderShipmentRequest request = new OrderShipmentRequest { OrderId = 1 };
@@ -44,7 +45,10 @@ namespace TellDontAskKata.Tests.UseCases
         [Fact]
         public void CreatedOrdersCannotBeShipped()
         {
-            Order initialOrder = new Order { Id = 1, Status = OrderStatus.Created };
+	        var initialOrder = OrderBuilder.AnOrder()
+		        .WithId(1)
+		        .WithStatus(OrderStatus.Created)
+		        .Build();
             orderRepository.AddOrder(initialOrder);
 
             OrderShipmentRequest request = new OrderShipmentRequest { OrderId = 1 };
@@ -59,7 +63,10 @@ namespace TellDontAskKata.Tests.UseCases
         [Fact]
         public void RejectedOrdersCannotBeShipped()
         {
-            Order initialOrder = new Order { Id = 1, Status = OrderStatus.Rejected };
+	        var initialOrder = OrderBuilder.AnOrder()
+		        .WithId(1)
+		        .WithStatus(OrderStatus.Rejected)
+		        .Build();
             orderRepository.AddOrder(initialOrder);
 
             OrderShipmentRequest request = new OrderShipmentRequest { OrderId = 1 };
@@ -74,11 +81,10 @@ namespace TellDontAskKata.Tests.UseCases
         [Fact]
         public void ShippedOrdersCannotBeShippedAgain()
         {
-            Order initialOrder = new Order
-            {
-                Id = 1,
-                Status = OrderStatus.Shipped
-            };
+	        var initialOrder = OrderBuilder.AnOrder()
+		        .WithId(1)
+		        .WithStatus(OrderStatus.Shipped)
+		        .Build();
             orderRepository.AddOrder(initialOrder);
 
             OrderShipmentRequest request = new OrderShipmentRequest

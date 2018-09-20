@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-
-using TellDontAskKata.Domain;
+using System.Linq;
+using TellDontAskKata.Domain.Orders;
+using TellDontAskKata.Domain.Products;
 using TellDontAskKata.Tests.Doubles;
-using TellDontAskKata.Repository;
 using TellDontAskKata.UseCase;
 
 using Xunit;
@@ -23,16 +23,12 @@ namespace TellDontAskKata.Tests.UseCases
         public OrderCreationUseCaseTest()
         {
             orderRepository = new TestOrderRepository();
-            food = new Category
-            {
-                Name = "Food",
-                TaxPercentage = new decimal(10)
-            };
+	        food = new Category("Food", 10m);
             productCatalogue = new InMemoryProductCatalog(
                 new List<Product>()
                 {
-                    new Product { Category = this.food, Name = "salad", Price = new decimal(3.56) },
-                    new Product { Category = this.food, Name = "tomato", Price = new decimal(4.65)}
+                    new Product("salad", food, 3.56m),
+                    new Product("tomato", food, 4.65m)
                 });
             useCase = new OrderCreationUseCase(orderRepository, productCatalogue);
         }
@@ -68,17 +64,21 @@ namespace TellDontAskKata.Tests.UseCases
             Assert.Equal(23.20m, insertedOrder.Total);
             Assert.Equal(2.13m, insertedOrder.Tax);
             Assert.Equal("EUR", insertedOrder.Currency);
-            Assert.Equal(2, insertedOrder.Items.Count);
-            Assert.Equal("salad", insertedOrder.Items[0].Product.Name);
-            Assert.Equal(3.56m, insertedOrder.Items[0].Product.Price);
-            Assert.Equal(2, insertedOrder.Items[0].Quantity);
-            Assert.Equal(7.84m, insertedOrder.Items[0].TaxedAmount);
-            Assert.Equal(0.72m, insertedOrder.Items[0].Tax);
-            Assert.Equal("tomato", insertedOrder.Items[1].Product.Name);
-            Assert.Equal(4.65m, insertedOrder.Items[1].Product.Price);
-            Assert.Equal(3, insertedOrder.Items[1].Quantity);
-            Assert.Equal(15.36m, insertedOrder.Items[1].TaxedAmount);
-            Assert.Equal(1.41m, insertedOrder.Items[1].Tax);
+            Assert.Equal(2, insertedOrder.Items.Count());
+	        
+	        var saladItem = insertedOrder.Items.ElementAt(0);
+	        Assert.Equal("salad", saladItem.Name);
+            Assert.Equal(3.56m, saladItem.Price);
+            Assert.Equal(2, saladItem.Quantity);
+            Assert.Equal(7.84m, saladItem.TaxedAmount);
+            Assert.Equal(0.72m, saladItem.Tax);
+
+	        var tomatoItem = insertedOrder.Items.ElementAt(1);
+	        Assert.Equal("tomato", tomatoItem.Name);
+            Assert.Equal(4.65m, tomatoItem.Price);
+            Assert.Equal(3, tomatoItem.Quantity);
+            Assert.Equal(15.36m, tomatoItem.TaxedAmount);
+            Assert.Equal(1.41m, tomatoItem.Tax);
         }
 
         [Fact]
