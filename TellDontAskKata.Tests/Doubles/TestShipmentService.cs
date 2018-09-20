@@ -3,7 +3,7 @@ using TellDontAskKata.Domain.Shipping;
 
 namespace TellDontAskKata.Tests.Doubles
 {
-    public class TestShipmentService: IShipmentService
+    public class TestShipmentService : IShipmentService
     {
         public void Ship(Order order)
         {

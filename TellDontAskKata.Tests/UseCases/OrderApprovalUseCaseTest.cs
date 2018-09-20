@@ -1,11 +1,9 @@
 ﻿using System;
-
 using TellDontAskKata.Domain;
 using TellDontAskKata.Domain.Orders;
 using TellDontAskKata.Domain.Orders.Exceptions;
 using TellDontAskKata.Tests.Doubles;
 using TellDontAskKata.UseCase;
-
 using Xunit;
 
 namespace TellDontAskKata.Tests.UseCases
@@ -25,9 +23,9 @@ namespace TellDontAskKata.Tests.UseCases
         [Fact]
         public void ApprovedExistingOrder()
         {
-	        Order initialOrder = OrderBuilder.AnOrder().WithId(1).Build();
+            Order initialOrder = OrderBuilder.AnOrder().WithId(1).Build();
             orderRepository.AddOrder(initialOrder);
-            OrderApprovalRequest request = new OrderApprovalRequest { OrderId = 1, Approved = true };
+            OrderApprovalRequest request = new OrderApprovalRequest {OrderId = 1, Approved = true};
 
             useCase.Run(request);
 
@@ -39,7 +37,7 @@ namespace TellDontAskKata.Tests.UseCases
         {
             Order initialOrder = OrderBuilder.AnOrder().WithId(1).Build();
             orderRepository.AddOrder(initialOrder);
-            OrderApprovalRequest request = new OrderApprovalRequest { OrderId = 1, Approved = false };
+            OrderApprovalRequest request = new OrderApprovalRequest {OrderId = 1, Approved = false};
 
             useCase.Run(request);
 
@@ -51,7 +49,7 @@ namespace TellDontAskKata.Tests.UseCases
         {
             Order initialOrder = OrderBuilder.AnOrder().WithId(1).WithStatus(OrderStatus.Rejected).Build();
             orderRepository.AddOrder(initialOrder);
-            OrderApprovalRequest request = new OrderApprovalRequest { OrderId = 1, Approved = true };
+            OrderApprovalRequest request = new OrderApprovalRequest {OrderId = 1, Approved = true};
 
             Action runAction = () => useCase.Run(request);
 
@@ -63,7 +61,7 @@ namespace TellDontAskKata.Tests.UseCases
         {
             Order initialOrder = OrderBuilder.AnOrder().WithId(1).WithStatus(OrderStatus.Approved).Build();
             orderRepository.AddOrder(initialOrder);
-            OrderApprovalRequest request = new OrderApprovalRequest { OrderId = 1, Approved = false };
+            OrderApprovalRequest request = new OrderApprovalRequest {OrderId = 1, Approved = false};
 
             Action runAction = () => useCase.Run(request);
 
@@ -75,7 +73,7 @@ namespace TellDontAskKata.Tests.UseCases
         {
             Order initialOrder = OrderBuilder.AnOrder().WithId(1).WithStatus(OrderStatus.Shipped).Build();
             orderRepository.AddOrder(initialOrder);
-            OrderApprovalRequest request = new OrderApprovalRequest { OrderId = 1, Approved = true };
+            OrderApprovalRequest request = new OrderApprovalRequest {OrderId = 1, Approved = true};
 
             Action runAction = () => useCase.Run(request);
 
@@ -87,7 +85,7 @@ namespace TellDontAskKata.Tests.UseCases
         {
             Order initialOrder = OrderBuilder.AnOrder().WithId(1).WithStatus(OrderStatus.Shipped).Build();
             orderRepository.AddOrder(initialOrder);
-            OrderApprovalRequest request = new OrderApprovalRequest { OrderId = 1, Approved = false };
+            OrderApprovalRequest request = new OrderApprovalRequest {OrderId = 1, Approved = false};
 
             Action runAction = () => useCase.Run(request);
 

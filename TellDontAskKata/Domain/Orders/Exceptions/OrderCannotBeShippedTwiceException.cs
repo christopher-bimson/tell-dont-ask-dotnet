@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 
 namespace TellDontAskKata.Domain.Orders.Exceptions
 {
-	public class OrderCannotBeShippedTwiceException : Exception
+    public class OrderCannotBeShippedTwiceException : Exception
     {
         public OrderCannotBeShippedTwiceException()
         {
@@ -13,11 +13,13 @@ namespace TellDontAskKata.Domain.Orders.Exceptions
         {
         }
 
-        public OrderCannotBeShippedTwiceException(string message, Exception innerException) : base(message, innerException)
+        public OrderCannotBeShippedTwiceException(string message, Exception innerException) : base(message,
+            innerException)
         {
         }
 
-        protected OrderCannotBeShippedTwiceException(SerializationInfo info, StreamingContext context) : base(info, context)
+        protected OrderCannotBeShippedTwiceException(SerializationInfo info, StreamingContext context) : base(info,
+            context)
         {
         }
     }

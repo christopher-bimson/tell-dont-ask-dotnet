@@ -13,11 +13,13 @@ namespace TellDontAskKata.Domain.Orders.Exceptions
         {
         }
 
-        public ShippedOrdersCannotBeChangedException(string message, Exception innerException) : base(message, innerException)
+        public ShippedOrdersCannotBeChangedException(string message, Exception innerException) : base(message,
+            innerException)
         {
         }
 
-        protected ShippedOrdersCannotBeChangedException(SerializationInfo info, StreamingContext context) : base(info, context)
+        protected ShippedOrdersCannotBeChangedException(SerializationInfo info, StreamingContext context) : base(info,
+            context)
         {
         }
     }

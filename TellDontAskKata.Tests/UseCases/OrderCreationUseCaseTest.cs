@@ -5,7 +5,6 @@ using TellDontAskKata.Domain.Orders;
 using TellDontAskKata.Domain.Products;
 using TellDontAskKata.Tests.Doubles;
 using TellDontAskKata.UseCase;
-
 using Xunit;
 
 namespace TellDontAskKata.Tests.UseCases
@@ -23,7 +22,7 @@ namespace TellDontAskKata.Tests.UseCases
         public OrderCreationUseCaseTest()
         {
             orderRepository = new TestOrderRepository();
-	        food = new Category("Food", 10m);
+            food = new Category("Food", 10m);
             productCatalogue = new InMemoryProductCatalog(
                 new List<Product>()
                 {
@@ -53,7 +52,8 @@ namespace TellDontAskKata.Tests.UseCases
                 {
                     Requests = new List<SellItemRequest>
                     {
-                        saladRequest, tomatoRequest
+                        saladRequest,
+                        tomatoRequest
                     }
                 };
 
@@ -65,16 +65,16 @@ namespace TellDontAskKata.Tests.UseCases
             Assert.Equal(2.13m, insertedOrder.Tax);
             Assert.Equal("EUR", insertedOrder.Currency);
             Assert.Equal(2, insertedOrder.Items.Count());
-	        
-	        var saladItem = insertedOrder.Items.ElementAt(0);
-	        Assert.Equal("salad", saladItem.Name);
+
+            var saladItem = insertedOrder.Items.ElementAt(0);
+            Assert.Equal("salad", saladItem.Name);
             Assert.Equal(3.56m, saladItem.Price);
             Assert.Equal(2, saladItem.Quantity);
             Assert.Equal(7.84m, saladItem.TaxedAmount);
             Assert.Equal(0.72m, saladItem.Tax);
 
-	        var tomatoItem = insertedOrder.Items.ElementAt(1);
-	        Assert.Equal("tomato", tomatoItem.Name);
+            var tomatoItem = insertedOrder.Items.ElementAt(1);
+            Assert.Equal("tomato", tomatoItem.Name);
             Assert.Equal(4.65m, tomatoItem.Price);
             Assert.Equal(3, tomatoItem.Quantity);
             Assert.Equal(15.36m, tomatoItem.TaxedAmount);

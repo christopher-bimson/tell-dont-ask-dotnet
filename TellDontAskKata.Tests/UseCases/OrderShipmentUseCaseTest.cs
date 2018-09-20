@@ -1,11 +1,9 @@
 ﻿using System;
-
 using TellDontAskKata.Domain;
 using TellDontAskKata.Domain.Orders;
 using TellDontAskKata.Domain.Orders.Exceptions;
 using TellDontAskKata.Tests.Doubles;
 using TellDontAskKata.UseCase;
-
 using Xunit;
 
 namespace TellDontAskKata.Tests.UseCases
@@ -28,13 +26,13 @@ namespace TellDontAskKata.Tests.UseCases
         [Fact]
         public void ShipApprovedOrder()
         {
-	        var initialOrder = OrderBuilder.AnOrder()
-		        .WithId(1)
-		        .WithStatus(OrderStatus.Approved)
-		        .Build();
+            var initialOrder = OrderBuilder.AnOrder()
+                .WithId(1)
+                .WithStatus(OrderStatus.Approved)
+                .Build();
             orderRepository.AddOrder(initialOrder);
 
-            OrderShipmentRequest request = new OrderShipmentRequest { OrderId = 1 };
+            OrderShipmentRequest request = new OrderShipmentRequest {OrderId = 1};
 
             useCase.Run(request);
 
@@ -45,13 +43,13 @@ namespace TellDontAskKata.Tests.UseCases
         [Fact]
         public void CreatedOrdersCannotBeShipped()
         {
-	        var initialOrder = OrderBuilder.AnOrder()
-		        .WithId(1)
-		        .WithStatus(OrderStatus.Created)
-		        .Build();
+            var initialOrder = OrderBuilder.AnOrder()
+                .WithId(1)
+                .WithStatus(OrderStatus.Created)
+                .Build();
             orderRepository.AddOrder(initialOrder);
 
-            OrderShipmentRequest request = new OrderShipmentRequest { OrderId = 1 };
+            OrderShipmentRequest request = new OrderShipmentRequest {OrderId = 1};
 
             Action runAction = () => useCase.Run(request);
 
@@ -63,13 +61,13 @@ namespace TellDontAskKata.Tests.UseCases
         [Fact]
         public void RejectedOrdersCannotBeShipped()
         {
-	        var initialOrder = OrderBuilder.AnOrder()
-		        .WithId(1)
-		        .WithStatus(OrderStatus.Rejected)
-		        .Build();
+            var initialOrder = OrderBuilder.AnOrder()
+                .WithId(1)
+                .WithStatus(OrderStatus.Rejected)
+                .Build();
             orderRepository.AddOrder(initialOrder);
 
-            OrderShipmentRequest request = new OrderShipmentRequest { OrderId = 1 };
+            OrderShipmentRequest request = new OrderShipmentRequest {OrderId = 1};
 
             Action runAction = () => useCase.Run(request);
 
@@ -81,10 +79,10 @@ namespace TellDontAskKata.Tests.UseCases
         [Fact]
         public void ShippedOrdersCannotBeShippedAgain()
         {
-	        var initialOrder = OrderBuilder.AnOrder()
-		        .WithId(1)
-		        .WithStatus(OrderStatus.Shipped)
-		        .Build();
+            var initialOrder = OrderBuilder.AnOrder()
+                .WithId(1)
+                .WithStatus(OrderStatus.Shipped)
+                .Build();
             orderRepository.AddOrder(initialOrder);
 
             OrderShipmentRequest request = new OrderShipmentRequest

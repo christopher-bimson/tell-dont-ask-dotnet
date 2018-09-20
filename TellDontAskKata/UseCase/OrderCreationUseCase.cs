@@ -21,9 +21,10 @@ namespace TellDontAskKata.UseCase
             var order = new Order();
             foreach (var itemRequest in request.Requests)
             {
-	            var product = productCatalog.GetByName(itemRequest.ProductName);
-	            order.Add(product, itemRequest.Quantity);
+                var product = productCatalog.GetByName(itemRequest.ProductName);
+                order.Add(product, itemRequest.Quantity);
             }
+
             orderRepository.Save(order);
         }
     }

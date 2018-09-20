@@ -13,11 +13,13 @@ namespace TellDontAskKata.Domain.Orders.Exceptions
         {
         }
 
-        public RejectedOrderCannotBeApprovedException(string message, Exception innerException) : base(message, innerException)
+        public RejectedOrderCannotBeApprovedException(string message, Exception innerException) : base(message,
+            innerException)
         {
         }
 
-        protected RejectedOrderCannotBeApprovedException(SerializationInfo info, StreamingContext context) : base(info, context)
+        protected RejectedOrderCannotBeApprovedException(SerializationInfo info, StreamingContext context) : base(info,
+            context)
         {
         }
     }

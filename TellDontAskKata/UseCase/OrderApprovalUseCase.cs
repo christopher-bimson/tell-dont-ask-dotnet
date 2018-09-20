@@ -13,12 +13,12 @@ namespace TellDontAskKata.UseCase
 
         public void Run(OrderApprovalRequest request)
         {
-	        var order = orderRepository.GetById(request.OrderId);
-			if(request.Approved)
-				order.Approve();
-			else
-				order.Reject();
-	        orderRepository.Save(order);
+            var order = orderRepository.GetById(request.OrderId);
+            if (request.Approved)
+                order.Approve();
+            else
+                order.Reject();
+            orderRepository.Save(order);
         }
     }
 }
