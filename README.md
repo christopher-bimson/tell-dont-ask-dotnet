@@ -1,4 +1,4 @@
-#Tell Don't Ask Kata
+# Tell Don't Ask Kata
 
 This is a solution to a .NET version of the Tell Don't Ask kata by 
 [Gabriele Tondi](https://github.com/gabrieletondi/tell-dont-ask-kata).
