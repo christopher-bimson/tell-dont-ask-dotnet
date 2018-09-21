@@ -7,7 +7,7 @@ namespace TellDontAskKata.Tests.Doubles
     {
         public void Ship(Order order)
         {
-            this.ShippedOrder = order;
+            ShippedOrder = order;
         }
 
         public Order ShippedOrder { get; set; }

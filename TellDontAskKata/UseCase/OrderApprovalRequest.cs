@@ -1,9 +1,9 @@
 ﻿namespace TellDontAskKata.UseCase
 {
     /// <remarks>
-    /// I'd also be tempted to redesign this, the next time I had to touch
+    /// I'd also be tempted to redesign this the next time I had to touch
     /// it. Rejecting an Order by submitting an ApprovalRequest with
-    /// Approved = false is needlessly comlex.
+    /// Approved = false is needlessly complex.
     ///
     /// A separate OrderRejectionUseCase with an OrderRejectionRequest
     /// would make more sense.

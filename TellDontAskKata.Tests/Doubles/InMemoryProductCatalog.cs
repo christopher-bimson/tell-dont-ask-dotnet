@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TellDontAskKata.Domain;
 using TellDontAskKata.Domain.Products;
 
 namespace TellDontAskKata.Tests.Doubles

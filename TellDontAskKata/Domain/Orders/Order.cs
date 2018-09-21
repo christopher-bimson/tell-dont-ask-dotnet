@@ -16,14 +16,14 @@ namespace TellDontAskKata.Domain.Orders
     /// </remarks>
     public class Order
     {
-        private readonly OrderItems items;
-
         public Order()
         {
             Status = OrderStatus.Created;
             items = new OrderItems();
             Currency = "EUR";
         }
+
+        private readonly OrderItems items;
 
         public int Id { get; protected set; }
 

@@ -1,5 +1,4 @@
 ﻿using System;
-using TellDontAskKata.Domain;
 using TellDontAskKata.Domain.Orders;
 using TellDontAskKata.Domain.Orders.Exceptions;
 using TellDontAskKata.Tests.Doubles;
@@ -10,9 +9,8 @@ namespace TellDontAskKata.Tests.UseCases
 {
     public class OrderApprovalUseCaseTest
     {
-        private TestOrderRepository orderRepository;
-
-        private OrderApprovalUseCase useCase;
+        private readonly TestOrderRepository orderRepository;
+        private readonly OrderApprovalUseCase useCase;
 
         public OrderApprovalUseCaseTest()
         {
